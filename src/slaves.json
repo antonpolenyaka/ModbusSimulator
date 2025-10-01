@@ -1,0 +1,93 @@
+{
+  "Server": {
+    "Ip": "0.0.0.0",
+    "Port": 502
+  },
+  "Slaves": [
+    {
+      "SlaveId": 1,
+      "Maps": [
+        {
+          "Type": "HoldingRegisters",
+          "Ranges": [
+            {
+              "StartAddress": 0,
+              "Size": 11,
+              "Name": "Measures1"
+            },
+            {
+              "StartAddress": 15,
+              "Size": 33,
+              "Name": "Measures2"
+            },
+            {
+              "StartAddress": 100,
+              "Size": 21,
+              "Name": "Events"
+            }
+          ]
+        },
+        {
+          "Type": "Coils",
+          "Ranges": [
+            {
+              "StartAddress": 0,
+              "Size": 16,
+              "Name": "Commands1"
+            },
+            {
+              "StartAddress": 30,
+              "Size": 6,
+              "Name": "Commands2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SlaveId": 2,
+      "Maps": [
+        {
+          "Type": "HoldingRegisters",
+          "Ranges": [
+            {
+              "StartAddress": 0,
+              "Size": 5,
+              "Name": "Measures1"
+            },
+            {
+              "StartAddress": 10,
+              "Size": 5,
+              "Name": "Measures2"
+            },
+            {
+              "StartAddress": 50,
+              "Size": 10,
+              "Name": "Events"
+            },
+            {
+              "StartAddress": 64,
+              "Size": 33,
+              "Name": "ExtendedMeasures"
+            }
+          ]
+        },
+        {
+          "Type": "Coils",
+          "Ranges": [
+            {
+              "StartAddress": 0,
+              "Size": 8,
+              "Name": "Commands1"
+            },
+            {
+              "StartAddress": 20,
+              "Size": 4,
+              "Name": "Commands2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

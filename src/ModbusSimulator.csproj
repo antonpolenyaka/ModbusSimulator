@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace>ModbusSimulator</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="src\**" />
+	  <Compile Remove="tests\**" />
+	  <EmbeddedResource Remove="src\**" />
+	  <EmbeddedResource Remove="tests\**" />
+	  <None Remove="src\**" />
+	  <None Remove="tests\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Api\Controllers\" />
+		<Folder Include="Api\Extensions\" />
+		<Folder Include="Application\Interfaces\" />
+		<Folder Include="Domain\Events\" />
+		<Folder Include="Domain\Exceptions\" />
+		<Folder Include="Infrastructure\Logging\" />
+		<Folder Include="Shared\Helpers\" />
+		<Folder Include="Shared\Extensions\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="slaves.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>

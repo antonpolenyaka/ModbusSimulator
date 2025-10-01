@@ -1,0 +1,166 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\ReposGIT\\ModbusSimulator\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{84C6FF05-2953-4364-B678-0FB79BF43B4A}|src\\ModbusSimulator.csproj|c:\\reposgit\\modbussimulator\\src\\infrastructure\\modbustcp\\modbusrequesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84C6FF05-2953-4364-B678-0FB79BF43B4A}|src\\ModbusSimulator.csproj|solutionrelative:src\\infrastructure\\modbustcp\\modbusrequesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84C6FF05-2953-4364-B678-0FB79BF43B4A}|src\\ModbusSimulator.csproj|c:\\reposgit\\modbussimulator\\src\\infrastructure\\persistence\\slavejsonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84C6FF05-2953-4364-B678-0FB79BF43B4A}|src\\ModbusSimulator.csproj|solutionrelative:src\\infrastructure\\persistence\\slavejsonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84C6FF05-2953-4364-B678-0FB79BF43B4A}|src\\ModbusSimulator.csproj|c:\\reposgit\\modbussimulator\\src\\infrastructure\\modbustcp\\modbusserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84C6FF05-2953-4364-B678-0FB79BF43B4A}|src\\ModbusSimulator.csproj|solutionrelative:src\\infrastructure\\modbustcp\\modbusserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84C6FF05-2953-4364-B678-0FB79BF43B4A}|src\\ModbusSimulator.csproj|c:\\reposgit\\modbussimulator\\src\\slaves.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{84C6FF05-2953-4364-B678-0FB79BF43B4A}|src\\ModbusSimulator.csproj|solutionrelative:src\\slaves.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84C6FF05-2953-4364-B678-0FB79BF43B4A}|src\\ModbusSimulator.csproj|c:\\reposgit\\modbussimulator\\src\\infrastructure\\configuration\\serverconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84C6FF05-2953-4364-B678-0FB79BF43B4A}|src\\ModbusSimulator.csproj|solutionrelative:src\\infrastructure\\configuration\\serverconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84C6FF05-2953-4364-B678-0FB79BF43B4A}|src\\ModbusSimulator.csproj|c:\\reposgit\\modbussimulator\\src\\infrastructure\\configuration\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84C6FF05-2953-4364-B678-0FB79BF43B4A}|src\\ModbusSimulator.csproj|solutionrelative:src\\infrastructure\\configuration\\appconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84C6FF05-2953-4364-B678-0FB79BF43B4A}|src\\ModbusSimulator.csproj|c:\\reposgit\\modbussimulator\\src\\domain\\valueobjects\\addressrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84C6FF05-2953-4364-B678-0FB79BF43B4A}|src\\ModbusSimulator.csproj|solutionrelative:src\\domain\\valueobjects\\addressrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ModbusRequestHandler.cs",
+              "DocumentMoniker": "C:\\ReposGIT\\ModbusSimulator\\src\\Infrastructure\\ModbusTcp\\ModbusRequestHandler.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\ModbusTcp\\ModbusRequestHandler.cs",
+              "ToolTip": "C:\\ReposGIT\\ModbusSimulator\\src\\Infrastructure\\ModbusTcp\\ModbusRequestHandler.cs",
+              "RelativeToolTip": "src\\Infrastructure\\ModbusTcp\\ModbusRequestHandler.cs",
+              "ViewState": "AgIAAM8AAAAAAAAAAAAvwNoAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-01T11:04:15.458Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SlaveJsonRepository.cs",
+              "DocumentMoniker": "C:\\ReposGIT\\ModbusSimulator\\src\\Infrastructure\\Persistence\\SlaveJsonRepository.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\Persistence\\SlaveJsonRepository.cs",
+              "ToolTip": "C:\\ReposGIT\\ModbusSimulator\\src\\Infrastructure\\Persistence\\SlaveJsonRepository.cs",
+              "RelativeToolTip": "src\\Infrastructure\\Persistence\\SlaveJsonRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABkAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-01T10:38:33.548Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ModbusServer.cs",
+              "DocumentMoniker": "C:\\ReposGIT\\ModbusSimulator\\src\\Infrastructure\\ModbusTcp\\ModbusServer.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\ModbusTcp\\ModbusServer.cs",
+              "ToolTip": "C:\\ReposGIT\\ModbusSimulator\\src\\Infrastructure\\ModbusTcp\\ModbusServer.cs",
+              "RelativeToolTip": "src\\Infrastructure\\ModbusTcp\\ModbusServer.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAswEUAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-01T10:36:55.354Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "slaves.json",
+              "DocumentMoniker": "C:\\ReposGIT\\ModbusSimulator\\src\\slaves.json",
+              "RelativeDocumentMoniker": "src\\slaves.json",
+              "ToolTip": "C:\\ReposGIT\\ModbusSimulator\\src\\slaves.json",
+              "RelativeToolTip": "src\\slaves.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-01T10:35:46.701Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AddressRange.cs",
+              "DocumentMoniker": "C:\\ReposGIT\\ModbusSimulator\\src\\Domain\\ValueObjects\\AddressRange.cs",
+              "RelativeDocumentMoniker": "src\\Domain\\ValueObjects\\AddressRange.cs",
+              "ToolTip": "C:\\ReposGIT\\ModbusSimulator\\src\\Domain\\ValueObjects\\AddressRange.cs",
+              "RelativeToolTip": "src\\Domain\\ValueObjects\\AddressRange.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-01T10:30:46.445Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ServerConfig.cs",
+              "DocumentMoniker": "C:\\ReposGIT\\ModbusSimulator\\src\\Infrastructure\\Configuration\\ServerConfig.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\Configuration\\ServerConfig.cs",
+              "ToolTip": "C:\\ReposGIT\\ModbusSimulator\\src\\Infrastructure\\Configuration\\ServerConfig.cs",
+              "RelativeToolTip": "src\\Infrastructure\\Configuration\\ServerConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-01T10:45:37.886Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppConfig.cs",
+              "DocumentMoniker": "C:\\ReposGIT\\ModbusSimulator\\src\\Infrastructure\\Configuration\\AppConfig.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\Configuration\\AppConfig.cs",
+              "ToolTip": "C:\\ReposGIT\\ModbusSimulator\\src\\Infrastructure\\Configuration\\AppConfig.cs",
+              "RelativeToolTip": "src\\Infrastructure\\Configuration\\AppConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-01T10:30:52.098Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
