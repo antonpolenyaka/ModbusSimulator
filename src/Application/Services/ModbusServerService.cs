@@ -23,7 +23,7 @@ namespace ModbusSimulator.Application.Services
 
             foreach (var slaveConfig in config.Slaves)
             {
-                var slave = new ModbusSlave { SlaveId = slaveConfig.SlaveId };
+                var slave = new ModbusSlave { SlaveId = slaveConfig.SlaveId, SupportsTimeSync = slaveConfig.SupportsTimeSync };
 
                 foreach (var mapConfig in slaveConfig.Maps)
                 {

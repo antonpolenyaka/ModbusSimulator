@@ -3,6 +3,7 @@
     public class ModbusSlave
     {
         public byte SlaveId { get; set; }
+        public bool SupportsTimeSync { get; set; }
         public List<RegisterMap> Maps { get; set; } = [];
     }
 }

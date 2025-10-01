@@ -6,6 +6,7 @@
   "Slaves": [
     {
       "SlaveId": 1,
+      "SupportsTimeSync": true,
       "Maps": [
         {
           "Type": "HoldingRegisters",
@@ -18,6 +19,11 @@
             {
               "StartAddress": 15,
               "Size": 33,
+              "Name": "Measures2"
+            },
+            {
+              "StartAddress": 55,
+              "Size": 3,
               "Name": "Measures2"
             },
             {
@@ -46,6 +52,7 @@
     },
     {
       "SlaveId": 2,
+      "SupportsTimeSync": true,
       "Maps": [
         {
           "Type": "HoldingRegisters",
@@ -69,6 +76,11 @@
               "StartAddress": 64,
               "Size": 33,
               "Name": "ExtendedMeasures"
+            },
+            {
+              "StartAddress": 261,
+              "Size": 1,
+              "Name": "X"
             }
           ]
         },

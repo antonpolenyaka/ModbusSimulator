@@ -38,7 +38,7 @@ namespace ModbusSimulator.Api
             // Add slaves
             foreach (var config in appConfig.Slaves)
             {
-                var slave = new ModbusSlave { SlaveId = config.SlaveId };
+                var slave = new ModbusSlave { SlaveId = config.SlaveId, SupportsTimeSync = config.SupportsTimeSync };
 
                 foreach (var mapConfig in config.Maps)
                 {

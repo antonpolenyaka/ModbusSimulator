@@ -28,6 +28,8 @@ namespace ModbusSimulator.Infrastructure.ModbusTcp
                 0x05 => WriteSingleCoil(request, slave, transactionId, unitId),
                 // Write Single Register
                 0x06 => WriteSingleRegister(request, slave, transactionId, unitId),
+                // Write Multiple Registers (time sync case)
+                0x10 => WriteMultipleRegisters(request, slave, transactionId, unitId),
                 // Illegal function
                 _ => ExceptionResponse(transactionId, unitId, functionCode, 0x01)
             };
@@ -36,6 +38,44 @@ namespace ModbusSimulator.Infrastructure.ModbusTcp
         }
 
         #region Function Implementations
+        private static byte[] WriteMultipleRegisters(byte[] request, ModbusSlave slave, ushort transactionId, byte unitId)
+        {
+            // Extract starting address and quantity of registers from request
+            ushort startAddress = (ushort)((request[8] << 8) + request[9]);
+            ushort quantity = (ushort)((request[10] << 8) + request[11]);
+
+            if (slave.SupportsTimeSync)
+            {
+                // Build a normal Modbus TCP response for function code 16 (Write Multiple Registers)
+                // The response echoes: Function code + Starting Address + Quantity of Registers
+
+                byte[] response = new byte[12];
+
+                // MBAP Header (7 bytes)
+                response[0] = (byte)(transactionId >> 8);  // Transaction ID high
+                response[1] = (byte)(transactionId & 0xFF); // Transaction ID low
+                response[2] = 0;  // Protocol ID high (always 0)
+                response[3] = 0;  // Protocol ID low (always 0)
+                response[4] = 0;  // Length high
+                response[5] = 6;  // Length low (UnitId + FunctionCode + StartAddr(2) + Quantity(2))
+                response[6] = unitId; // Unit Identifier
+
+                // PDU (Protocol Data Unit)
+                response[7] = 0x10; // Function code: Write Multiple Registers (16)
+                response[8] = (byte)(startAddress >> 8); // Starting address high
+                response[9] = (byte)(startAddress & 0xFF); // Starting address low
+                response[10] = (byte)(quantity >> 8); // Quantity of registers high
+                response[11] = (byte)(quantity & 0xFF); // Quantity of registers low
+
+                return response;
+            }
+            else
+            {
+                // If this slave does not support time synchronization, return exception "Illegal function"
+                return ExceptionResponse(transactionId, unitId, 0x10, 0x01);
+            }
+        }
+
         private static byte[] ReadHoldingRegisters(byte[] request, ModbusSlave slave, ushort transactionId, byte unitId)
         {
             ushort startAddress = (ushort)((request[8] << 8) + request[9]);
