@@ -1,4 +1,6 @@
-﻿using ModbusSimulator.Domain.Entities;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using ModbusSimulator.Domain.Entities;
 using ModbusSimulator.Infrastructure.Configuration;
 using ModbusSimulator.Infrastructure.ModbusTcp;
 using ModbusSimulator.Infrastructure.Persistence;
@@ -7,7 +9,7 @@ namespace ModbusSimulator.Api
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
             Console.WriteLine("Starting Modbus TCP Simulator...");
 
@@ -31,11 +33,33 @@ namespace ModbusSimulator.Api
                 return;
             }
 
-            // Create server with IP and Port from JSON
-            Console.WriteLine($"Server will bind to IP: {appConfig.Server.Ip}, Port: {appConfig.Server.Port}");
-            var server = new ModbusServer(appConfig.Server.Ip, appConfig.Server.Port);
+            // Build ASP.NET Core WebApplication (for Swagger + REST endpoints)
+            var builder = WebApplication.CreateBuilder(args);
 
-            // Add slaves
+            // Register services
+            builder.Services.AddSingleton<SlaveStateService>();
+
+            // Add controllers support
+            builder.Services.AddControllers();
+
+            // Swagger
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
+            var app = builder.Build();
+
+            // Enable Swagger
+            app.UseSwagger();
+            app.UseSwaggerUI();
+            Console.WriteLine("Swagger UI available at http://localhost:5000/swagger/index.html");
+
+            // Map controller routes
+            app.MapControllers();
+
+            // Resolve SlaveStateService to preload slaves from JSON
+            var slaveState = app.Services.GetRequiredService<SlaveStateService>();
+
+            // Initialize slaves from JSON config
             foreach (var config in appConfig.Slaves)
             {
                 var slave = new ModbusSlave { SlaveId = config.SlaveId, SupportsTimeSync = config.SupportsTimeSync };
@@ -68,18 +92,21 @@ namespace ModbusSimulator.Api
                     slave.Maps.Add(map);
                 }
 
-                server.AddSlave(slave);
+                slaveState.Slaves.Add(slave);
                 Console.WriteLine($"Added Slave {slave.SlaveId} with {slave.Maps.Count} maps");
             }
 
-            // Start the Modbus TCP server
-            server.Start();
-            Console.WriteLine($"Modbus TCP Server running on {appConfig.Server.Ip}:{appConfig.Server.Port}. Press ENTER to stop...");
+            // Start Modbus server in background task
+            Task.Run(() =>
+            {
+                Console.WriteLine($"Server will bind to IP: {appConfig.Server.Ip}, Port: {appConfig.Server.Port}");
+                var server = new ModbusServer(slaveState, appConfig.Server.Ip, appConfig.Server.Port);
+                server.Start();
+                Console.WriteLine($"Modbus TCP Server running on {appConfig.Server.Ip}:{appConfig.Server.Port}");
+            });
 
-            Console.ReadLine();
-            server.Stop();
-
-            Console.WriteLine("Server stopped.");
+            // Run Web API
+            app.Run();
         }
     }
 }

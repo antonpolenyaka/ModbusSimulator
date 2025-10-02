@@ -12,19 +12,14 @@
           "Type": "HoldingRegisters",
           "Ranges": [
             {
-              "StartAddress": 0,
-              "Size": 11,
+              "StartAddress": 6,
+              "Size": 1,
               "Name": "Measures1"
             },
             {
               "StartAddress": 15,
               "Size": 33,
-              "Name": "Measures2"
-            },
-            {
-              "StartAddress": 100,
-              "Size": 21,
-              "Name": "Events"
+              "Name": "Measures1"
             }
           ]
         },
@@ -43,13 +38,8 @@
           "Ranges": [
             {
               "StartAddress": 0,
-              "Size": 16,
+              "Size": 1,
               "Name": "Commands1"
-            },
-            {
-              "StartAddress": 30,
-              "Size": 6,
-              "Name": "Commands2"
             }
           ]
         }

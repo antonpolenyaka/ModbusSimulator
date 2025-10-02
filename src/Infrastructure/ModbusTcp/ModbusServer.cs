@@ -7,13 +7,14 @@ namespace ModbusSimulator.Infrastructure.ModbusTcp
     /// <summary>
     /// Creates a Modbus TCP server bound to the given IP and port.
     /// </summary>
-    public class ModbusServer(string ip = "0.0.0.0", int port = 502)
+    public class ModbusServer(SlaveStateService stateService, string ip = "0.0.0.0", int port = 502)
     {
         private readonly IPAddress _ipAddress = IPAddress.Parse(ip);
         private readonly int _port = port;
         private TcpListener? _listener;
         private bool _isRunning;
         private readonly List<ModbusSlave> _slaves = [];
+        private readonly SlaveStateService _stateService = stateService;
 
         /// <summary>
         /// Add a slave to the server
@@ -96,7 +97,8 @@ namespace ModbusSimulator.Infrastructure.ModbusTcp
 
                         // Handle Modbus request
                         byte slaveId = buffer[6];
-                        ModbusSlave? slave = _slaves.Find(s => s.SlaveId == slaveId);
+                        // Now we fetch the slave from the shared state service
+                        ModbusSlave? slave = _stateService.Slaves.FirstOrDefault(s => s.SlaveId == slaveId);
                         if (slave == null)
                         {
                             // Build exception response: functionCode | 0x80, exceptionCode 0x0B

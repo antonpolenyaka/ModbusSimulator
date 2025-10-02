@@ -5,9 +5,10 @@ using ModbusSimulator.Infrastructure.Persistence;
 
 namespace ModbusSimulator.Application.Services
 {
-    public class ModbusServerService(SlaveJsonRepository slaveRepository)
+    public class ModbusServerService(SlaveJsonRepository slaveRepository, SlaveStateService slaveState)
     {
         private readonly SlaveJsonRepository _slaveRepository = slaveRepository ?? throw new ArgumentNullException(nameof(slaveRepository));
+        private readonly SlaveStateService _slaveState = slaveState ?? throw new ArgumentNullException(nameof(slaveState));
         private ModbusServer? _server;
 
         public void StartServer()
@@ -19,7 +20,7 @@ namespace ModbusSimulator.Application.Services
                 throw new Exception("No slave configurations found.");
 
             // Create server with IP and Port from JSON
-            _server = new ModbusServer(config.Server.Ip, config.Server.Port);
+            _server = new ModbusServer(_slaveState, config.Server.Ip, config.Server.Port);
 
             foreach (var slaveConfig in config.Slaves)
             {
