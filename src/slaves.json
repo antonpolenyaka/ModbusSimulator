@@ -46,6 +46,16 @@
               "StartAddress": 0,
               "Size": 1,
               "Name": "Commands1"
+            },
+            {
+              "StartAddress": 774,
+              "Size": 1,
+              "Name": "Commands2"
+            },
+            {
+              "StartAddress": 775,
+              "Size": 1,
+              "Name": "Commands3"
             }
           ]
         }
@@ -78,6 +88,16 @@
               "StartAddress": 0,
               "Size": 1,
               "Name": "Commands1"
+            },
+            {
+              "StartAddress": 7936,
+              "Size": 1,
+              "Name": "Commands2"
+            },
+            {
+              "StartAddress": 7952,
+              "Size": 1,
+              "Name": "Commands2"
             }
           ]
         },

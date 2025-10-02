@@ -205,7 +205,13 @@ namespace ModbusSimulator.Infrastructure.ModbusTcp
             ushort value = (ushort)((request[10] << 8) + request[11]);
 
             var coilsMap = slave.Maps.FirstOrDefault(m => m.Type.Equals("Coils", StringComparison.OrdinalIgnoreCase));
-            if (coilsMap == null) return ExceptionResponse(transactionId, unitId, 0x05, 0x02);
+            if (coilsMap == null)
+            {
+                // No coil map -> illegal data address
+                return ExceptionResponse(transactionId, unitId, 0x05, 0x02);
+            }
+
+            bool written = false;
 
             foreach (var block in coilsMap.Ranges)
             {
@@ -213,11 +219,18 @@ namespace ModbusSimulator.Infrastructure.ModbusTcp
                 if (index >= 0 && index < block.Size)
                 {
                     block.Coils[index] = value == 0xFF00;
+                    written = true;
                     break;
                 }
             }
 
-            // Echo request as response
+            if (!written)
+            {
+                // Address not found -> illegal data address
+                return ExceptionResponse(transactionId, unitId, 0x05, 0x02);
+            }
+
+            // Echo request as response (only if write succeeded)
             byte[] response = new byte[12];
             Array.Copy(request, 0, response, 0, 12);
             return response;
