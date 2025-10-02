@@ -59,6 +59,9 @@ namespace ModbusSimulator.Api
                         if (map.Type.Equals("Coils", StringComparison.OrdinalIgnoreCase))
                             block.Coils = new bool[block.Size];
 
+                        if (map.Type.Equals("InputRegisters", StringComparison.OrdinalIgnoreCase))
+                            block.InputRegisters = new ushort[block.Size];
+
                         map.Ranges.Add(block);
                     }
 

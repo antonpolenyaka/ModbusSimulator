@@ -22,14 +22,19 @@
               "Name": "Measures2"
             },
             {
-              "StartAddress": 55,
-              "Size": 3,
-              "Name": "Measures2"
-            },
-            {
               "StartAddress": 100,
               "Size": 21,
               "Name": "Events"
+            }
+          ]
+        },
+        {
+          "Type": "InputRegisters",
+          "Ranges": [
+            {
+              "StartAddress": 55,
+              "Size": 3,
+              "Name": "Inputs1"
             }
           ]
         },
@@ -96,6 +101,16 @@
               "StartAddress": 20,
               "Size": 4,
               "Name": "Commands2"
+            }
+          ]
+        },
+        {
+          "Type": "InputRegisters",
+          "Ranges": [
+            {
+              "StartAddress": 261,
+              "Size": 1,
+              "Name": "Inputs1"
             }
           ]
         }

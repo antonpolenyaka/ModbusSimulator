@@ -24,6 +24,8 @@ namespace ModbusSimulator.Infrastructure.ModbusTcp
                 0x01 => ReadCoils(request, slave, transactionId, unitId),
                 // Read Holding Registers
                 0x03 => ReadHoldingRegisters(request, slave, transactionId, unitId),
+                // Read Input Registers
+                0x04 => ReadInputRegisters(request, slave, transactionId, unitId),
                 // Write Single Coil
                 0x05 => WriteSingleCoil(request, slave, transactionId, unitId),
                 // Write Single Register
@@ -49,7 +51,9 @@ namespace ModbusSimulator.Infrastructure.ModbusTcp
                 // Build a normal Modbus TCP response for function code 16 (Write Multiple Registers)
                 // The response echoes: Function code + Starting Address + Quantity of Registers
 
+#pragma warning disable IDE0300 // Simplify collection initialization
                 byte[] response = new byte[12];
+#pragma warning restore IDE0300 // Simplify collection initialization
 
                 // MBAP Header (7 bytes)
                 response[0] = (byte)(transactionId >> 8);  // Transaction ID high
@@ -270,6 +274,57 @@ namespace ModbusSimulator.Infrastructure.ModbusTcp
             Array.Copy(data, 0, response, 9, data.Length);
 
             return response;
+        }
+
+        private static byte[] ReadInputRegisters(byte[] request, ModbusSlave slave, ushort transactionId, byte unitId)
+        {
+            // Extract starting address and number of registers to read
+            ushort startAddress = (ushort)((request[8] << 8) + request[9]);
+            ushort quantity = (ushort)((request[10] << 8) + request[11]);
+
+            // Find the InputRegisters map in the slave definition
+            var regMap = slave.Maps.FirstOrDefault(m => m.Type.Equals("InputRegisters", StringComparison.OrdinalIgnoreCase));
+            if (regMap == null)
+                // If no InputRegisters are defined for this slave → Modbus exception "Illegal data address"
+                return ExceptionResponse(transactionId, unitId, 0x04, 0x02);
+
+            ushort[] result = new ushort[quantity];
+
+            for (int i = 0; i < quantity; i++)
+            {
+                int addr = startAddress + i;
+                bool found = false;
+
+                foreach (var block in regMap.Ranges)
+                {
+                    int index = addr - block.StartAddress;
+                    if (index >= 0 && index < block.Size)
+                    {
+                        // Access the InputRegisters array from the block
+                        result[i] = block.InputRegisters[index];
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                {
+                    // Address not mapped in JSON → Modbus exception "Illegal data address"
+                    return ExceptionResponse(transactionId, unitId, 0x04, 0x02);
+                }
+            }
+
+            // Convert ushort values into bytes (big-endian: high byte first)
+            byte byteCount = (byte)(quantity * 2);
+            byte[] data = new byte[byteCount];
+            for (int i = 0; i < quantity; i++)
+            {
+                data[i * 2] = (byte)(result[i] >> 8);
+                data[i * 2 + 1] = (byte)(result[i] & 0xFF);
+            }
+
+            // Build and return the Modbus TCP response with byte count field
+            return BuildResponseWithByteCount(transactionId, unitId, 0x04, data);
         }
         #endregion
     }
