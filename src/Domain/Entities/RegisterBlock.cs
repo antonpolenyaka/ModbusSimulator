@@ -14,5 +14,7 @@
 
         // Array for Input Registers (read-only registers)
         public ushort[] InputRegisters { get; set; } = [];
+
+        public bool IsTimeSync { get; set; } = false;
     }
 }

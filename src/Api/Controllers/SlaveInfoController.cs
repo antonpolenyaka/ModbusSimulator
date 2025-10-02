@@ -43,7 +43,8 @@ namespace ModbusSimulator.Api.Controllers
                     {
                         r.Name,
                         r.StartAddress,
-                        r.Size
+                        r.Size,
+                        r.IsTimeSync
                     })
                 })
             };

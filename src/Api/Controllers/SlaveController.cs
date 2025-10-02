@@ -10,6 +10,75 @@ namespace ModbusSimulator.Api.Controllers
         private readonly SlaveStateService _state = state;
 
         #region GET Endpoints
+        [HttpGet("{unitId}/timesync")]
+        public IActionResult GetTimeSync(byte unitId)
+        {
+            var slave = _state.GetSlave(unitId);
+            if (slave == null) return NotFound("Slave not found");
+
+            var block = slave.Maps.SelectMany(m => m.Ranges)
+                          .FirstOrDefault(b => b.IsTimeSync);
+            if (block == null) return NotFound("No TimeSync block defined");
+
+            DateTime? dateTime = null;
+
+            try
+            {
+                if (block.HoldingRegisters.Length >= 4)
+                {
+                    // Decode year
+                    int year = 2000 + block.HoldingRegisters[0];
+
+                    // Decode month and day
+                    int month = (block.HoldingRegisters[1] >> 8) & 0xFF;
+                    int day = block.HoldingRegisters[1] & 0xFF;
+
+                    // Decode hour and minute
+                    int hour = (block.HoldingRegisters[2] >> 8) & 0xFF;
+                    int minute = block.HoldingRegisters[2] & 0xFF;
+
+                    // Decode seconds + milliseconds
+                    int second = block.HoldingRegisters[3] / 1000;
+                    int millisecond = block.HoldingRegisters[3] % 1000;
+
+                    dateTime = new DateTime(year, month, day, hour, minute, second, millisecond);
+                }
+            }
+            catch
+            {
+                dateTime = null;
+            }
+
+            return Ok(new
+            {
+                block.StartAddress,
+                Values = block.HoldingRegisters,
+                FormattedDateTime = dateTime?.ToString("dd/MM/yyyy HH:mm:ss.fff") ?? "Invalid DateTime",
+                LastSync = slave.LastTimeSync.HasValue
+                    ? slave.LastTimeSync.Value.ToLocalTime().ToString("dd/MM/yyyy HH:mm:ss")
+                    : "Never"
+            });
+        }
+
+        [HttpPut("{unitId}/timesync")]
+        public IActionResult UpdateTimeSync(byte unitId, [FromBody] ushort[] values)
+        {
+            var slave = _state.GetSlave(unitId);
+            if (slave == null) return NotFound("Slave not found");
+
+            var block = slave.Maps.SelectMany(m => m.Ranges)
+                          .FirstOrDefault(b => b.IsTimeSync);
+            if (block == null) return NotFound("No TimeSync block defined");
+
+            if (values.Length != block.Size)
+                return BadRequest($"Expected {block.Size} words");
+
+            for (int i = 0; i < block.Size; i++)
+                block.HoldingRegisters[i] = values[i];
+
+            slave.LastTimeSync = DateTime.UtcNow;
+            return Ok("TimeSync registers updated");
+        }
 
         // GET api/slaves/{unitId}/holding/{address}?length=5
         [HttpGet("{unitId}/holding/{address}")]

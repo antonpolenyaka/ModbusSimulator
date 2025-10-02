@@ -36,7 +36,8 @@ namespace ModbusSimulator.Application.Services
                         {
                             StartAddress = range.StartAddress,
                             Size = range.Size,
-                            Name = range.Name
+                            Name = range.Name,
+                            IsTimeSync = range.IsTimeSync,
                         };
 
                         if (map.Type.Equals("HoldingRegisters", StringComparison.OrdinalIgnoreCase))

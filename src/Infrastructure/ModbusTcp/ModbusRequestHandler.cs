@@ -46,38 +46,69 @@ namespace ModbusSimulator.Infrastructure.ModbusTcp
             ushort startAddress = (ushort)((request[8] << 8) + request[9]);
             ushort quantity = (ushort)((request[10] << 8) + request[11]);
 
-            if (slave.SupportsTimeSync)
+            // Decode the values sent
+            byte byteCount = request[12];
+            ushort[] values = new ushort[quantity];
+            for (int i = 0; i < quantity; i++)
+                values[i] = (ushort)((request[13 + i * 2] << 8) + request[14 + i * 2]);
+
+            // Find the holding register block containing these addresses
+            var regMap = slave.Maps.FirstOrDefault(m => m.Type.Equals("HoldingRegisters", StringComparison.OrdinalIgnoreCase));
+            if (regMap == null)
             {
-                // Build a normal Modbus TCP response for function code 16 (Write Multiple Registers)
-                // The response echoes: Function code + Starting Address + Quantity of Registers
-
-#pragma warning disable IDE0300 // Simplify collection initialization
-                byte[] response = new byte[12];
-#pragma warning restore IDE0300 // Simplify collection initialization
-
-                // MBAP Header (7 bytes)
-                response[0] = (byte)(transactionId >> 8);  // Transaction ID high
-                response[1] = (byte)(transactionId & 0xFF); // Transaction ID low
-                response[2] = 0;  // Protocol ID high (always 0)
-                response[3] = 0;  // Protocol ID low (always 0)
-                response[4] = 0;  // Length high
-                response[5] = 6;  // Length low (UnitId + FunctionCode + StartAddr(2) + Quantity(2))
-                response[6] = unitId; // Unit Identifier
-
-                // PDU (Protocol Data Unit)
-                response[7] = 0x10; // Function code: Write Multiple Registers (16)
-                response[8] = (byte)(startAddress >> 8); // Starting address high
-                response[9] = (byte)(startAddress & 0xFF); // Starting address low
-                response[10] = (byte)(quantity >> 8); // Quantity of registers high
-                response[11] = (byte)(quantity & 0xFF); // Quantity of registers low
-
-                return response;
-            }
-            else
-            {
-                // If this slave does not support time synchronization, return exception "Illegal function"
+                // No holding registers defined -> return illegal function
                 return ExceptionResponse(transactionId, unitId, 0x10, 0x01);
             }
+
+            bool written = false;
+
+            foreach (var block in regMap.Ranges)
+            {
+                // Check if the block overlaps the request
+                if (startAddress >= block.StartAddress && (startAddress + quantity) <= (block.StartAddress + block.Size))
+                {
+                    for (int i = 0; i < quantity; i++)
+                    {
+                        block.HoldingRegisters[startAddress - block.StartAddress + i] = values[i];
+                    }
+
+                    // If it's a time sync block, also store last sync time
+                    if (block.IsTimeSync)
+                    {
+                        if (slave.SupportsTimeSync)
+                            slave.LastTimeSync = DateTime.UtcNow;
+                        else
+                            return ExceptionResponse(transactionId, unitId, 0x10, 0x01); // Illegal function
+                    }
+
+                    written = true;
+                    break; // written to one block
+                }
+            }
+
+            if (!written)
+            {
+                // Requested address range does not exist in this slave
+                return ExceptionResponse(transactionId, unitId, 0x10, 0x02); // illegal data address
+            }
+
+            // Build normal response: echo FunctionCode + StartAddress + Quantity
+            byte[] response = new byte[12];
+            response[0] = (byte)(transactionId >> 8);
+            response[1] = (byte)(transactionId & 0xFF);
+            response[2] = 0;
+            response[3] = 0;
+            response[4] = 0;
+            response[5] = 6;
+            response[6] = unitId;
+
+            response[7] = 0x10; // Function code
+            response[8] = (byte)(startAddress >> 8);
+            response[9] = (byte)(startAddress & 0xFF);
+            response[10] = (byte)(quantity >> 8);
+            response[11] = (byte)(quantity & 0xFF);
+
+            return response;
         }
 
         private static byte[] ReadHoldingRegisters(byte[] request, ModbusSlave slave, ushort transactionId, byte unitId)

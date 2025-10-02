@@ -12,6 +12,12 @@
           "Type": "HoldingRegisters",
           "Ranges": [
             {
+              "StartAddress": 2,
+              "Size": 4,
+              "Name": "TimeSync",
+              "IsTimeSync": true
+            },
+            {
               "StartAddress": 6,
               "Size": 1,
               "Name": "Measures1"
@@ -53,29 +59,15 @@
           "Type": "HoldingRegisters",
           "Ranges": [
             {
-              "StartAddress": 0,
-              "Size": 5,
-              "Name": "Measures1"
-            },
-            {
-              "StartAddress": 10,
-              "Size": 5,
-              "Name": "Measures2"
-            },
-            {
-              "StartAddress": 50,
-              "Size": 10,
-              "Name": "Events"
+              "StartAddress": 2,
+              "Size": 4,
+              "Name": "TimeSync",
+              "IsTimeSync": true
             },
             {
               "StartAddress": 64,
               "Size": 33,
-              "Name": "ExtendedMeasures"
-            },
-            {
-              "StartAddress": 261,
-              "Size": 1,
-              "Name": "X"
+              "Name": "Measures1"
             }
           ]
         },
@@ -84,13 +76,8 @@
           "Ranges": [
             {
               "StartAddress": 0,
-              "Size": 8,
+              "Size": 1,
               "Name": "Commands1"
-            },
-            {
-              "StartAddress": 20,
-              "Size": 4,
-              "Name": "Commands2"
             }
           ]
         },
