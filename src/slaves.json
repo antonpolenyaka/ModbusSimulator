@@ -25,7 +25,7 @@
             {
               "StartAddress": 15,
               "Size": 33,
-              "Name": "Measures1"
+              "Name": "EventZoneTalus"
             }
           ]
         },
@@ -77,7 +77,7 @@
             {
               "StartAddress": 64,
               "Size": 33,
-              "Name": "Measures1"
+              "Name": "EventZone1Sepam"
             }
           ]
         },
