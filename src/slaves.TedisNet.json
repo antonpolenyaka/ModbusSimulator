@@ -1,0 +1,117 @@
+{
+  "Server": {
+    "Ip": "0.0.0.0",
+    "Port": 502
+  },
+  "Slaves": [
+    {
+      "SlaveId": 1,
+      "SupportsTimeSync": true,
+      "Maps": [
+        {
+          "Type": "HoldingRegisters",
+          "Ranges": [
+            {
+              "StartAddress": 2,
+              "Size": 4,
+              "Name": "TimeSync",
+              "IsTimeSync": true
+            },
+            {
+              "StartAddress": 6,
+              "Size": 1,
+              "Name": "Measures1"
+            },
+            {
+              "StartAddress": 15,
+              "Size": 33,
+              "Name": "EventZoneTalus"
+            }
+          ]
+        },
+        {
+          "Type": "InputRegisters",
+          "Ranges": [
+            {
+              "StartAddress": 55,
+              "Size": 3,
+              "Name": "Inputs1"
+            }
+          ]
+        },
+        {
+          "Type": "Coils",
+          "Ranges": [
+            {
+              "StartAddress": 0,
+              "Size": 1,
+              "Name": "Commands1"
+            },
+            {
+              "StartAddress": 774,
+              "Size": 1,
+              "Name": "Commands2"
+            },
+            {
+              "StartAddress": 775,
+              "Size": 1,
+              "Name": "Commands3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SlaveId": 2,
+      "SupportsTimeSync": true,
+      "Maps": [
+        {
+          "Type": "HoldingRegisters",
+          "Ranges": [
+            {
+              "StartAddress": 2,
+              "Size": 4,
+              "Name": "TimeSync",
+              "IsTimeSync": true
+            },
+            {
+              "StartAddress": 64,
+              "Size": 33,
+              "Name": "EventZone1Sepam"
+            }
+          ]
+        },
+        {
+          "Type": "Coils",
+          "Ranges": [
+            {
+              "StartAddress": 0,
+              "Size": 1,
+              "Name": "Commands1"
+            },
+            {
+              "StartAddress": 7936,
+              "Size": 1,
+              "Name": "Commands2"
+            },
+            {
+              "StartAddress": 7952,
+              "Size": 1,
+              "Name": "Commands2"
+            }
+          ]
+        },
+        {
+          "Type": "InputRegisters",
+          "Ranges": [
+            {
+              "StartAddress": 261,
+              "Size": 1,
+              "Name": "Inputs1"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

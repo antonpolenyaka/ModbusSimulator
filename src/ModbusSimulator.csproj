@@ -28,6 +28,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Update="slaves.TedisNet.json">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 		<None Update="slaves.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>

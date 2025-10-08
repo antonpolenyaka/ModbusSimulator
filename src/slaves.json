@@ -5,64 +5,89 @@
   },
   "Slaves": [
     {
-      "SlaveId": 1,
-      "SupportsTimeSync": true,
+      "SlaveId": 2,
+      "SupportsTimeSync": false,
       "Maps": [
         {
           "Type": "HoldingRegisters",
           "Ranges": [
             {
-              "StartAddress": 2,
+              "StartAddress": 1002,
               "Size": 4,
-              "Name": "TimeSync",
-              "IsTimeSync": true
+              "Name": "TimeSync"
             },
             {
-              "StartAddress": 6,
-              "Size": 1,
-              "Name": "Measures1"
-            },
-            {
-              "StartAddress": 15,
-              "Size": 33,
-              "Name": "EventZoneTalus"
-            }
-          ]
-        },
-        {
-          "Type": "InputRegisters",
-          "Ranges": [
-            {
-              "StartAddress": 55,
+              "StartAddress": 1013,
               "Size": 3,
-              "Name": "Inputs1"
-            }
-          ]
-        },
-        {
-          "Type": "Coils",
-          "Ranges": [
-            {
-              "StartAddress": 0,
-              "Size": 1,
-              "Name": "Commands1"
+              "Name": "TimeSync"
             },
             {
-              "StartAddress": 774,
+              "StartAddress": 1033,
               "Size": 1,
-              "Name": "Commands2"
+              "Name": "TimeSync"
             },
             {
-              "StartAddress": 775,
+              "StartAddress": 1041,
               "Size": 1,
-              "Name": "Commands3"
+              "Name": "TimeSync"
+            },
+            {
+              "StartAddress": 1045,
+              "Size": 1,
+              "Name": "TimeSync"
+            },
+            {
+              "StartAddress": 1049,
+              "Size": 1,
+              "Name": "TimeSync"
             }
           ]
         }
       ]
     },
     {
-      "SlaveId": 2,
+      "SlaveId": 3,
+      "SupportsTimeSync": false,
+      "Maps": [
+        {
+          "Type": "HoldingRegisters",
+          "Ranges": [
+            {
+              "StartAddress": 1002,
+              "Size": 4,
+              "Name": "TimeSync"
+            },
+            {
+              "StartAddress": 1013,
+              "Size": 3,
+              "Name": "TimeSync"
+            },
+            {
+              "StartAddress": 1033,
+              "Size": 1,
+              "Name": "TimeSync"
+            },
+            {
+              "StartAddress": 1041,
+              "Size": 1,
+              "Name": "TimeSync"
+            },
+            {
+              "StartAddress": 1045,
+              "Size": 1,
+              "Name": "TimeSync"
+            },
+            {
+              "StartAddress": 1049,
+              "Size": 1,
+              "Name": "TimeSync"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SlaveId": 10,
       "SupportsTimeSync": true,
       "Maps": [
         {
@@ -77,33 +102,171 @@
             {
               "StartAddress": 64,
               "Size": 33,
-              "Name": "EventZone1Sepam"
-            }
-          ]
-        },
-        {
-          "Type": "Coils",
-          "Ranges": [
-            {
-              "StartAddress": 0,
-              "Size": 1,
-              "Name": "Commands1"
+              "Name": "TimeSync"
             },
             {
-              "StartAddress": 7936,
-              "Size": 1,
-              "Name": "Commands2"
+              "StartAddress": 262,
+              "Size": 4,
+              "Name": "TimeSync"
             },
             {
-              "StartAddress": 7952,
-              "Size": 1,
-              "Name": "Commands2"
+              "StartAddress": 276,
+              "Size": 3,
+              "Name": "TimeSync"
             }
           ]
         },
         {
           "Type": "InputRegisters",
           "Ranges": [
+            {
+              "StartAddress": 257,
+              "Size": 1,
+              "Name": "Inputs1"
+            },
+            {
+              "StartAddress": 259,
+              "Size": 1,
+              "Name": "Inputs1"
+            },
+            {
+              "StartAddress": 261,
+              "Size": 1,
+              "Name": "Inputs1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SlaveId": 11,
+      "SupportsTimeSync": true,
+      "Maps": [
+        {
+          "Type": "HoldingRegisters",
+          "Ranges": [
+            {
+              "StartAddress": 64,
+              "Size": 33,
+              "Name": "TimeSync"
+            },
+            {
+              "StartAddress": 262,
+              "Size": 4,
+              "Name": "TimeSync"
+            },
+            {
+              "StartAddress": 276,
+              "Size": 3,
+              "Name": "TimeSync"
+            }
+          ]
+        },
+        {
+          "Type": "InputRegisters",
+          "Ranges": [
+            {
+              "StartAddress": 257,
+              "Size": 1,
+              "Name": "Inputs1"
+            },
+            {
+              "StartAddress": 259,
+              "Size": 1,
+              "Name": "Inputs1"
+            },
+            {
+              "StartAddress": 261,
+              "Size": 1,
+              "Name": "Inputs1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SlaveId": 12,
+      "SupportsTimeSync": true,
+      "Maps": [
+        {
+          "Type": "HoldingRegisters",
+          "Ranges": [
+            {
+              "StartAddress": 64,
+              "Size": 33,
+              "Name": "TimeSync"
+            },
+            {
+              "StartAddress": 262,
+              "Size": 4,
+              "Name": "TimeSync"
+            },
+            {
+              "StartAddress": 276,
+              "Size": 3,
+              "Name": "TimeSync"
+            }
+          ]
+        },
+        {
+          "Type": "InputRegisters",
+          "Ranges": [
+            {
+              "StartAddress": 257,
+              "Size": 1,
+              "Name": "Inputs1"
+            },
+            {
+              "StartAddress": 259,
+              "Size": 1,
+              "Name": "Inputs1"
+            },
+            {
+              "StartAddress": 261,
+              "Size": 1,
+              "Name": "Inputs1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "SlaveId": 13,
+      "SupportsTimeSync": true,
+      "Maps": [
+        {
+          "Type": "HoldingRegisters",
+          "Ranges": [
+            {
+              "StartAddress": 64,
+              "Size": 33,
+              "Name": "TimeSync"
+            },
+            {
+              "StartAddress": 262,
+              "Size": 4,
+              "Name": "TimeSync"
+            },
+            {
+              "StartAddress": 276,
+              "Size": 3,
+              "Name": "TimeSync"
+            }
+          ]
+        },
+        {
+          "Type": "InputRegisters",
+          "Ranges": [
+            {
+              "StartAddress": 257,
+              "Size": 1,
+              "Name": "Inputs1"
+            },
+            {
+              "StartAddress": 259,
+              "Size": 1,
+              "Name": "Inputs1"
+            },
             {
               "StartAddress": 261,
               "Size": 1,
