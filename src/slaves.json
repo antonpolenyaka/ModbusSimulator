@@ -102,17 +102,17 @@
             {
               "StartAddress": 64,
               "Size": 33,
-              "Name": "TimeSync"
+              "Name": "EventZone"
             },
             {
               "StartAddress": 262,
               "Size": 4,
-              "Name": "TimeSync"
+              "Name": "DI"
             },
             {
               "StartAddress": 276,
               "Size": 3,
-              "Name": "TimeSync"
+              "Name": "DI"
             }
           ]
         },
@@ -146,19 +146,25 @@
           "Type": "HoldingRegisters",
           "Ranges": [
             {
+              "StartAddress": 2,
+              "Size": 4,
+              "Name": "TimeSync",
+              "IsTimeSync": true
+            },
+            {
               "StartAddress": 64,
               "Size": 33,
-              "Name": "TimeSync"
+              "Name": "EventZone"
             },
             {
               "StartAddress": 262,
               "Size": 4,
-              "Name": "TimeSync"
+              "Name": "DI"
             },
             {
               "StartAddress": 276,
               "Size": 3,
-              "Name": "TimeSync"
+              "Name": "DI"
             }
           ]
         },
@@ -192,19 +198,25 @@
           "Type": "HoldingRegisters",
           "Ranges": [
             {
+              "StartAddress": 2,
+              "Size": 4,
+              "Name": "TimeSync",
+              "IsTimeSync": true
+            },
+            {
               "StartAddress": 64,
               "Size": 33,
-              "Name": "TimeSync"
+              "Name": "EventZone"
             },
             {
               "StartAddress": 262,
               "Size": 4,
-              "Name": "TimeSync"
+              "Name": "DI"
             },
             {
               "StartAddress": 276,
               "Size": 3,
-              "Name": "TimeSync"
+              "Name": "DI"
             }
           ]
         },
@@ -238,19 +250,25 @@
           "Type": "HoldingRegisters",
           "Ranges": [
             {
+              "StartAddress": 2,
+              "Size": 4,
+              "Name": "TimeSync",
+              "IsTimeSync": true
+            },
+            {
               "StartAddress": 64,
               "Size": 33,
-              "Name": "TimeSync"
+              "Name": "EventZone"
             },
             {
               "StartAddress": 262,
               "Size": 4,
-              "Name": "TimeSync"
+              "Name": "DI"
             },
             {
               "StartAddress": 276,
               "Size": 3,
-              "Name": "TimeSync"
+              "Name": "DI"
             }
           ]
         },
