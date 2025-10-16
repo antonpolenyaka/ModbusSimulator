@@ -5,6 +5,62 @@
   },
   "Slaves": [
     {
+      "SlaveId": 1,
+      "SupportsTimeSync": false,
+      "Maps": [
+        {
+          "Type": "HoldingRegisters",
+          "Ranges": [
+            {
+              "StartAddress": 3929,
+              "Size": 2,
+              "Name": "Measures"
+            },
+            {
+              "StartAddress": 6508,
+              "Size": 2,
+              "Name": "Measures"
+            },
+            {
+              "StartAddress": 6520,
+              "Size": 2,
+              "Name": "Measures"
+            },
+            {
+              "StartAddress": 6632,
+              "Size": 2,
+              "Name": "Measures"
+            },
+            {
+              "StartAddress": 19000,
+              "Size": 28,
+              "Name": "Measures"
+            },
+            {
+              "StartAddress": 19036,
+              "Size": 14,
+              "Name": "Measures"
+            },
+            {
+              "StartAddress": 19084,
+              "Size": 2,
+              "Name": "Measures"
+            },
+            {
+              "StartAddress": 19100,
+              "Size": 2,
+              "Name": "Measures"
+            },
+            {
+              "StartAddress": 19108,
+              "Size": 2,
+              "Name": "Measures"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "SlaveId": 2,
       "SupportsTimeSync": false,
       "Maps": [
